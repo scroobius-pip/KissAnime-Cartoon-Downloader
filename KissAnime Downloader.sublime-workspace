@@ -1,0 +1,332 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"code",
+				"codeLines"
+			],
+			[
+				"fetc",
+				"fetchSignatureScript"
+			],
+			[
+				"sort",
+				"sortDescending"
+			],
+			[
+				"addE",
+				"addErrors"
+			],
+			[
+				"line",
+				"lineErrors"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "main.js",
+			"settings":
+			{
+				"buffer_size": 41391,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 96.0,
+		"selected_items":
+		[
+			[
+				"Package Control: install",
+				"Package Control: Install Package"
+			],
+			[
+				"js",
+				"Set Syntax: JavaScript"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 111.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/home/dom/Documents/git/KissAnime Downloader/main.js",
+		"/home/dom/Documents/git/Youtube Downloader/src/header.js",
+		"/home/dom/Documents/git/Youtube Downloader/src/classes/qualities.js",
+		"/home/dom/Documents/git/Youtube Downloader/src/classes/interval.js",
+		"/home/dom/Desktop/untitled.js",
+		"/home/dom/Documents/git/Youtube Downloader/src/classes/getSizes.js",
+		"/home/dom/Documents/git/Youtube Downloader/Gruntfile.js",
+		"/home/dom/Documents/git/Youtube Downloader/src/prototypes.js",
+		"/home/dom/Desktop/gantt.js",
+		"/home/dom/Documents/git/Youtube Downloader/src/classes/signature.js",
+		"/home/dom/Documents/git/Youtube Downloader/src/main.js",
+		"/home/dom/Documents/git/Youtube Downloader/src/css.js",
+		"/home/dom/Documents/git/Youtube Downloader/main.js",
+		"/home/dom/Documents/git/Youtube Downloader/Youtube Downloader.sublime-project",
+		"/home/dom/.config/sublime-text-2/Packages/User/JavaScript.sublime-settings",
+		"/home/dom/Documents/git/Youtube Downloader/src/interval.js",
+		"/home/dom/Documents/git/Youtube Downloader/src/getSizes.js",
+		"/home/dom/Documents/git/Youtube Downloader/src/qualities.js",
+		"/home/dom/Documents/comp1917/Something_Awesome/push.sh",
+		"/home/dom/Documents/comp1917/Something_Awesome/ClexCheck/scripts/lexical.js",
+		"/home/dom/Documents/bitbucket_pages/Gruntfile.js",
+		"/home/dom/Documents/comp1917/Something_Awesome/ClexCheck/scripts/editor.js",
+		"/home/dom/Documents/comp1917/Something_Awesome/ClexCheck/styles/style.css",
+		"/home/dom/Documents/comp1917/Something_Awesome/ClexCheck/index.html",
+		"/home/dom/Documents/comp1917/Something Awesome/CSyntaxChecker/scripts/editor.js",
+		"/home/dom/Documents/comp1917/Something Awesome/CSyntaxChecker/styles/style.css",
+		"/home/dom/Documents/comp1917/Something Awesome/CSyntaxChecker/index.html",
+		"/home/dom/Documents/comp1917/Something Awesome/CSyntaxChecker/scripts/lexical.js",
+		"/home/dom/Desktop/sieve.js",
+		"/home/dom/Documents/comp1917/Something Awesome/index.html"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"text.match",
+			"findmatch",
+			"this.regmatch",
+			"regcodes",
+			"this.regmatch",
+			"console.log",
+			"youtube.com",
+			"setpref",
+			"findmatch",
+			"scriptURL=",
+			"scriptURL",
+			"GM_xmlhttprequest",
+			"crossxml",
+			"crossxmlreq",
+			"findsignaturecode",
+			"addfilesize",
+			"findsignaturecode",
+			"fetchSignature",
+			"signature",
+			"isinteger",
+			"fetchSignatureScript",
+			"console",
+			"fetchsignaturescript",
+			"scriptURL",
+			"make",
+			"getAfter",
+			"console.log(\"h",
+			"console.log",
+			"// ====================================",
+			"$(document).ready(function(){\n            var lightbox = new Lightbox(\"Notice\", $(\"<div>\", {\n                style:'margin-bottom:1em', \n                html:\"This is a (hopefully) temporary solution. The problem is that YouTube uses the HTTPS protocol, whereas this site uses HTTP. As such, Javascript CANNOT embed this site in YouTube, hence leaving the only solution: To open the site in a new window</p><p>Anyway, this will close in 10 seconds</p>\"\n            }));\n            lightbox.enable();\n            new timeout({range:[0, MP3_WAIT+1], time:1, callback:function(i){ //execute a for loop for range, execute every certain amount of seconds\n                var lightbox = new Lightbox(\"Notice\", $(\"<div>\", {html:(MP3_WAIT-i)+\"...\"}));\n                $(\"title\").text(MP3_WAIT-i+\" seconds remaining\");\n                if (i === MP3_WAIT) self.close();\n            }});\n            $(window.top).find(\"#audio-bitrate-select\").val(window.location.href.split(\"&q=\")[1]);\n            setTimeout(function(){\n                $(\"#record-audio-button\")[0].click();\n            }, 3*1000);\n        });\n    }",
+			"typeof",
+			"sortdisplay",
+			"qualities",
+			"updatedisplay",
+			"firstspaninfo",
+			"QualitySort",
+			"Qualities",
+			"sizes",
+			"qualities",
+			"sortqualities",
+			"new getsizes",
+			"qualities",
+			"getsize",
+			"new GetSizes",
+			"audio_size",
+			"GetSizes",
+			"quality",
+			"listmatches",
+			"global_properties.audio_size",
+			"Getsizes",
+			"Program()",
+			"makescript",
+			"setupglobalsettings",
+			"getscript",
+			".fail",
+			"update the ",
+			"construct",
+			"setcaretpos",
+			"getlinefromx",
+			"getlinesfromcaret",
+			"getlinefromx",
+			"yEnd",
+			"()\n",
+			"getlinesfromcaret",
+			"getcaretpos",
+			"text",
+			"console.log",
+			"tab",
+			"getnodeindex",
+			"getcountbeforenode",
+			"console.log",
+			"adderrors",
+			"getcountbeforenode",
+			"getcaretpos",
+			"getlinefrom",
+			"setcaretpos",
+			"adderrors",
+			"setcaretpos",
+			"console.log",
+			"setcaretpos",
+			"fixlinenumbers",
+			"data.node",
+			"setcaretpos",
+			"console.log",
+			"getcaretpos",
+			"setcaret",
+			"setcaretpos",
+			"getcaretpos",
+			"ploterrors",
+			"getcaretpos",
+			"fixline",
+			"width",
+			"scroll",
+			"(\"|\")+\")(?!</",
+			".check",
+			"span",
+			"selectnodecontents",
+			"regexp",
+			"geterrors",
+			"getlinecount",
+			"errorchecks"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "main.js",
+					"settings":
+					{
+						"buffer_size": 41391,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								627,
+								627
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+			[
+				"",
+				"/home/dom/Documents/git/Youtube Downloader/Youtube Downloader.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true
+}

@@ -72,18 +72,24 @@ Interval.prototype = {
 
 function GetInterval(params){
 	Interval.call(this, params);
+	this.killAll = true;
 	this.make();
 }
 GetInterval.prototype = Extend(GetInterval, Interval, {
 	getCheck: function(){
 		if (window.remain[this.buttonId] !== this.lastRemain){
-			this.lastRemain = remain[this.buttonId];
+			this.lastRemain = window.remain[this.buttonId];
 			return;
 		}
 		this.req.abort();
 		this.exec += 1;
-		if (this.exec > 3 && global_settings.debug){
-			Error("(getCheck): Something went wrong with: "+this.iframeId+". This commonly occurs due to the captcha restraint. Fill in the 'Are you human' test and try again."+$captcha[0].outerHTML, ResumeProcesses, this);
+        console.log("EXEC COUNT:", this.exec, (this.exec > 3));
+        console.log("DEBUG:", global_settings.debug, (global_settings.debug));
+		if (this.exec > 3 && global_settings.debug) {
+            console.log("ATTEMPTING TO ERROR");
+			Error("(getCheck): Something went wrong with: "+this.iframeId+". This commonly occurs due to the captcha restraint. Fill in the 'Are you human' test and try again."+$captcha[0].outerHTML, function() {
+				ResumeProcesses();
+			}, this);
 		} else {
 			var _this = this;
 			this.req = $.get(this.newUrl, function(xhr){GetFromPage(xhr, _this.buttonId, _this.iframeId, _this, _this.index)});
@@ -91,8 +97,15 @@ GetInterval.prototype = Extend(GetInterval, Interval, {
 	},
 	make: function(){
 		var _this = this;
-		this.interval = setInterval(function(){ _this.getCheck()}, global_settings.errTimeout*1000);
-		this.req = $.get(this.newUrl, function(xhr){GetFromPage(xhr, _this.buttonId, _this.iframeId, _this, _this.index)}); 
+
+        console.log("Setting with:", global_settings.errTimeout);
+        this.interval = setInterval(function() {
+            _this.getCheck()
+        }, global_settings.errTimeout*1000);
+
+		this.req = $.get(this.newUrl, function(xhr) {
+            GetFromPage(xhr, _this.buttonId, _this.iframeId, _this, _this.index);
+        });
 	}
 });
 
@@ -114,7 +127,9 @@ iFrameInterval.prototype = Extend(iFrameInterval, Interval, {
 	iframeCheck: function(){
 		var exist = ($("#"+this.id).length > 0 && $("#"+this.id).attr("dead") !== "true"); //If it exists and requires checking
 		if (this.exec > 4 && global_settings.debug && exist){
-			Error("(iframeCheck): Something went wrong with: \""+this.title+"\". </p><p>It probably isn't redirecting properly. This could be because of slow internet or slow servers. Try increasing the 'Error Timeout' amount in the settings to fix this", ResumeProcesses, this);
+			Error("(iframeCheck): Something went wrong with: \""+this.title+"\". </p><p>It probably isn't redirecting properly. This could be because of slow internet or slow servers. Try increasing the 'Error Timeout' amount in the settings to fix this", function() {
+				ResumeProcesses();
+			}, this);
 		} else if (this.exec <= 4){
 			(exist) ? this.changeSrc() : this.kill(true);
 		}
@@ -892,12 +907,17 @@ function Lightbox(id, $container, params){
 	var params = params || {};
 	var count = (params.count) ? "_"+params.count.toString() : "";
 	this.enable = function(){
-		(global_settings.fade) ? $("#"+id+count+"_box").stop().fadeIn() : $("#"+id+count+"_box").show();
-		(global_settings.fade) ? $("#"+id+count+"_content").stop().fadeIn() : $("#"+id+count+"_content").show();
+		var $box     = $(window.top.$("#"+id+count+"_box"));
+		var $content = $(window.top.$("#"+id+count+"_content"));
+		(global_settings.fade) ? $box.stop().fadeIn()     : $box.show();
+		(global_settings.fade) ? $content.stop().fadeIn() : $content.show();
+		console.log("Trying to enable:#"+id+count+"_content");
 	};
 	this.disable = function(){
-		(global_settings.fade) ? $("#"+id+count+"_box").stop().fadeOut() : $("#"+id+count+"_box").hide();
-		(global_settings.fade) ? $("#"+id+count+"_content").stop().fadeOut() : $("#"+id+count+"_content").hide()
+		var $box     = $(window.top.$("#"+id+count+"_box"));
+		var $content = $(window.top.$("#"+id+count+"_content"));
+		(global_settings.fade) ? $box.stop().fadeOut()     : $box.hide();
+		(global_settings.fade) ? $content.stop().fadeOut() : $content.hide()
 	};
 
 	var $content = $("<div>").append("<h1 class='coolfont' style='padding:0.5em;text-align:center'>"+id+"</h1>");
@@ -930,20 +950,28 @@ function Lightbox(id, $container, params){
 	if (params.wrapCss) $wrap.css(params.wrapCss);
 	if (params.contCss) $content.css(params.contCss);
 	if (params.selectable) $content.removeClass("unselectable");
-	if ($("#"+id+"_content").length === 0) {
+
+	var $oldContent = $(window.top.$("#"+id+"_content"));
+	if ($oldContent.length === 0) {
 		$(window.top.$("body")).append($box).append($wrap);
 	} else {
-		$("#"+id+"_content .settingsWindow").html($("#"+id+"_content .settingsWindow").html()+$container.html());
+		console.log("GOING SETTINGS WINDOW ASSIGNMENT");
+		$settingsWindow = $oldContent.find(".settingsWindow");
+		$settingsWindow.find("genericMessage").remove();
+		$settingsWindow.html($settingsWindow.html()+$container.html());
 	}
 }
 
 function Error(text, callback, element){
 	if (element) (element.killAll) ? KillProcesses() : element.kill();
 
-	var $container = $("<div>", {class:"settingsWindow"}).append("<p>You have encountered an error. Please send details of this error to the developer at <a href='https://greasyfork.org/en/scripts/10305-kissanime-cartoon-downloader/feedback'>Greasyfork</a> or <a href='https://github.com/Domination9987/KissAnime-Cartoon-Downloader/issues'>GitHub</a>.</p>");
+	var $container = $("<div>", {class:"settingsWindow"}).append("<p class='genericMessage'>You have encountered an error. Please send details of this error to the developer at <a href='https://greasyfork.org/en/scripts/10305-kissanime-cartoon-downloader/feedback'>Greasyfork</a> or <a href='https://github.com/Domination9987/KissAnime-Cartoon-Downloader/issues'>GitHub</a>.</p>");
 	$container.append($("<p>", {html:text}));
 	if ($("#Error_content").length > 0) $container = $("<p>", {html:text});
 	var options = ($("#Error_content").length === 0) ? {'selectable':true, 'count':errors, 'closeHandler':callback} : {};
+    console.log("Making lightbox");
+    console.log($container);
+    console.log(options);
 	var light = new Lightbox("Error", $container, options);
 	light.enable();
 }
@@ -1025,6 +1053,7 @@ function ResumeProcesses(){
 	$("#Error_content").remove();
 	$("#Error_box").remove();
 	var procLen = processes.length;
+	console.log(processes);
 	for (var i = 0; i<procLen; i++){
 		if (processes[i].active === false) processes[i].resume(), processes[i].active = true;
 	}
