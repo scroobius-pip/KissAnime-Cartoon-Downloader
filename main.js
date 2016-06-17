@@ -279,14 +279,14 @@ if (currentWindow === "episode"){
 		// kissenc.min.js requires CryptoJS
 		$.getScript("/scripts/aes.js").then(function(){
 			// Also requires sha256
-			return $.getScript("/scripts/sha256.min.js") 
+			return $.getScript("/scripts/sha256.min.js");
 		}).then(function(){
 			// This script is required for decryption of the links
-			return $.getScript("/scripts/"+decryption.decryptName) 
+			return $.getScript("/scripts/"+decryption.decryptName);
 		}).then(function(){
 			initialiseBar(window.seriesCounter, MakeBar);
 		}).fail(function(xhr, settings, exception){
-			console.error("Error in loading decryption script", decryption, exception)
+			console.error("Error in loading decryption script", decryption, exception);
 		});
 	} else {
 
