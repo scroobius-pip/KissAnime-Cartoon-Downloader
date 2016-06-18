@@ -1052,10 +1052,13 @@ function KillProcesses(){
 function ResumeProcesses(){
 	$("#Error_content").remove();
 	$("#Error_box").remove();
-	var procLen = processes.length;
+	var procLen = window.top.processes.length;
 	console.log(processes);
 	for (var i = 0; i<procLen; i++){
-		if (processes[i].active === false) processes[i].resume(), processes[i].active = true;
+		if (window.top.processes[i].active === false) {
+			window.top.processes[i].resume();
+			window.top.processes[i].active = true;
+		}
 	}
 }
 
