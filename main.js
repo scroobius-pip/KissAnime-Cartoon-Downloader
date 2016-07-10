@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         KissAnime/Cartoon Downloader
 // @namespace    https://greasyfork.org/users/10036
-// @version      0.63
+// @version      0.64
 // @description  Download videos from the sites KissAnime.com, KissAsian.com and KissCartoon.com
 // @author       D. Slee
 // @icon         http://kissanime.to/Content/images/favicon.ico
@@ -154,7 +154,7 @@ String.prototype.contains = function(search){
 	} else if (typeof search === 'string'){
 		if (str.split(search).length > 1) return true;
 	}
-	return false;
+	return bool;
 };
 
 //Reduce a string with double/triple spaces with single spaces
@@ -221,18 +221,18 @@ var default_setings = {
 SetupGlobalSettings(); //Ensures that all global_settings are set... if not, refer to default_settings
 
 var css = [
-".disabled{ cursor:default!important; color:black!important;}",
-".coolfont{ background-color:#393939;border:1px solid #666666;color:#ccc;font:normal 15px 'Tahoma', Arial, Helvetica, sans-serif;}",
-".coolbutton{ margin-left:0.5em;display:inline-block;cursor:pointer;}",
-".pointer{ cursor:pointer}",
-".coollink{ color:red; margin-left:0.8em}",
-".unselectable{ -webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;}",
-".midalign{ vertical-align:middle;}",
-".settingsWindow{ width:100%;height:200px;overflow-y:scroll;border:1px solid gray;border-width:1px 0;}",
-".settingsWindow a{ color:red}",
-".settingsWindow h2{ margin-bottom:0.2em}",
-".inputdiv{ padding:0.4em 0}",
-".hiddenFrame{ width:0;height:0;position:fixed;left:0;top:0"
+	".disabled{ cursor:default!important; color:black!important;}",
+	".coolfont{ background-color:#393939;border:1px solid #666666;color:#ccc;font:normal 15px 'Tahoma', Arial, Helvetica, sans-serif;}",
+	".coolbutton{ margin-left:0.5em;display:inline-block;cursor:pointer;}",
+	".pointer{ cursor:pointer}",
+	".coollink{ color:red; margin-left:0.8em}",
+	".unselectable{ -webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;}",
+	".midalign{ vertical-align:middle;}",
+	".settingsWindow{ width:100%;height:200px;overflow-y:scroll;border:1px solid gray;border-width:1px 0;}",
+	".settingsWindow a{ color:red}",
+	".settingsWindow h2{ margin-bottom:0.2em}",
+	".inputdiv{ padding:0.4em 0}",
+	".hiddenFrame{ width:0;height:0;position:fixed;left:0;top:0"
 ];
 MakeCss(css);
 
@@ -879,6 +879,7 @@ function GetHost(){
 function GetVid(link, title, buttonId, iframeId){ //Force the download to be started from an iframe
 	link = link.replace("http", "https"); //Required for the KissAnime https host
 	link = link.replace("httpss", "https");
+	window.top.console.log(link);
 	global_settings.remSubDub = Boolean(global_settings.remSubDub);
 	if (global_settings.remSubDub === true){
 		title = title.replace(" (Dub)", "").replace(" (Sub)", "");
@@ -1080,7 +1081,7 @@ function WhatPage(){
 	var ep = ($("#centerDivVideo").length > 0);
 
 	if (window.location.href.indexOf("google") > -1){
-		if (!page) return 'nothing';
+		if (!page) return "nothing";
 		return "external";
 	}
 
