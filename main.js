@@ -138,11 +138,18 @@ iFrameInterval.prototype = Extend(iFrameInterval, Interval, {
 });
 
 //Misc functions
+//Check if a function contains a string or an array of strings
+//Input: <string> OR <array>
+//The array uses OR operators
 String.prototype.contains = function(search){
 	var str = this;
+	var bool = false;
 	if (Object.prototype.toString.call(search) === '[object Array]'){
 		for (i = 0; i<search.length; i++){
-			if (str.split(search[i]).length > 1) return true;
+			if (str.contains(search[i])){
+				bool = true;
+				break;
+			}
 		}
 	} else if (typeof search === 'string'){
 		if (str.split(search).length > 1) return true;
@@ -150,6 +157,7 @@ String.prototype.contains = function(search){
 	return false;
 };
 
+//Reduce a string with double/triple spaces with single spaces
 String.prototype.singleSpace = function(){
 	var array = this.split(" ");
 	for (var i = 0; i<array.length; i++){
@@ -161,6 +169,7 @@ String.prototype.singleSpace = function(){
 	return array.join(" ");
 };
 
+//Check if a string is parseable
 String.prototype.parseable = function(){
    	var str = this;
     try {
