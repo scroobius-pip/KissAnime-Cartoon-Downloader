@@ -201,7 +201,7 @@ var currentWindow = WhatPage(); //The current window that is active
 var remain = {};  //How many downloads remain...
 var eps = [];  //An array of the episode data
 var indexes = []; //An array containing the indexes of the episodes to be downloaded
-var processes = []; //An array containing all the processes being run
+window.processes = []; //An array containing all the processes being run
 var jDownloadLinks = []; //An array for holding the links in jDownloader compatibilty mode
 var bar;
 var global_settings = localStorage.getObject('global_settings') || {};
@@ -1016,13 +1016,13 @@ function timeout(params){
 		this.oldRange = this.range[0];
 		this.range[0] = this.range[1];
 		this.active = false;
-		if (remove) processes.splice(processes.indexOf(this), 1);
+		if (remove) window.top.processes.splice(window.top.processes.indexOf(this), 1);
 	}
-	processes.push(this);
+	window.top.processes.push(this);
 	this.loop();
 }
 timeout.prototype.resume = function(){
-	processes.splice(processes.indexOf(this), 1);
+	window.top.processes.splice(window.top.processes.indexOf(this), 1);
 	this.params.range[0] = this.oldRange;
 	new timeout(this.params);
 }
@@ -1055,15 +1055,15 @@ function UpdateGlobalSettings(){
 }
 
 function KillProcesses(){
-	for (var i = 0; i<processes.length; i++){
-		processes[i].kill();
+	for (var i = 0; i<window.top.processes.length; i++){
+		window.top.processes[i].kill();
 	}
 }
 function ResumeProcesses(){
 	$("#Error_content").remove();
 	$("#Error_box").remove();
 	var procLen = window.top.processes.length;
-	console.log(processes);
+	console.log(window.top.processes);
 	for (var i = 0; i<procLen; i++){
 		if (window.top.processes[i].active === false) {
 			window.top.processes[i].resume();
