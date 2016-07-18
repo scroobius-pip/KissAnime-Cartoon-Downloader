@@ -7,6 +7,7 @@
 // @icon         http://kissanime.to/Content/images/favicon.ico
 // @match        http://kissanime.com/Anime/*
 // @match        http://kissanime.to/Anime/*
+// @match        http://kissanime.to/anime/*
 // @match        https://kissanime.to/Anime/*
 // @match        http://kissasian.com/Drama/*
 // @match        http://kisscartoon.me/Cartoon/*
